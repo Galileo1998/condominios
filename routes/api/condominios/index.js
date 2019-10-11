@@ -48,4 +48,36 @@ router.post('/new', function(req, res){
       res.status(400).json({"error":"No se pudo ingresar objeto"});
     }
  }); // post /new
+
+ router.put('/update/:conCodigo',
+  function(req, res){
+      conCollection = fileModel.getCondominios();
+      var conCodigoToModify = req.params.conCodigo;
+      var amountToAdjust = parseInt(req.body.ajustar);
+      var adjustType = req.body.tipo || 'SUB';
+      var adjustHow = (adjustType == 'ADD' ? 1 : -1);
+      var modCondominios = {};
+      var newCondominiosArray = conCollection.map(
+        function(o,i){
+          if( conCodigoToModify === o.codigo){
+             o.cuotaMensual = adjustType;
+             modCondominios = Object.assign({}, o);
+          }
+          return o;
+        }
+      ); // end map
+    conCollection = newCondominiosArray;
+    fileModel.setCondominios(
+      conCollection,
+      function (err, savedSuccesfully) {
+        if (err) {
+          res.status(400).json({ "error": "No se pudo actualizar objeto" });
+        } else {
+          res.json(modCondominios);  // req.body ===  $_POST[]
+        }
+      }
+    );
+  }
+);// put :prdsku
+
 module.exports = router;
