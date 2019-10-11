@@ -80,4 +80,29 @@ router.post('/new', function(req, res){
   }
 );// put :prdsku
 
+router.delete(
+    '/delete/:conCodigo',
+    function( req, res) {
+      conCollection = fileModel.getCondominios();
+      var conCodigoToDelete  = req.params.conCodigo;
+      var newConCollection = conCollection.filter(
+        function(o, i){
+          return conCodigoToDelete !== o.codigo;
+        }
+      ); //filter
+      conCollection = newConCollection;
+      fileModel.setCondominios(
+        conCollection,
+        function (err, savedSuccesfully) {
+          if (err) {
+            res.status(400).json({ "error": "No se pudo eliminar objeto" });
+          } else {
+            res.json({"newProdsQty": conCollection.length});
+          }
+        }
+      );
+    }
+  );// delete
+  
+
 module.exports = router;
