@@ -1,0 +1,151 @@
+{
+	"id": "eddae733-8572-49cb-bb3c-ecddbfe14c2c",
+	"name": "condominios",
+	"description": "",
+	"auth": null,
+	"events": null,
+	"variables": [],
+	"order": [
+		"a39bd74b-c88a-4c02-a087-cb278c3bed84",
+		"f3ff405a-38cf-48e2-8e1e-073be1c67162",
+		"5cdee4c3-df4c-4f83-a664-819edaf70325",
+		"3c4709f5-a793-4cc9-b0cd-62c075b3f60f"
+	],
+	"folders_order": [],
+	"protocolProfileBehavior": {},
+	"folders": [],
+	"requests": [
+		{
+			"id": "3c4709f5-a793-4cc9-b0cd-62c075b3f60f",
+			"name": "delete",
+			"url": "http://localhost:3000/api/con/delete/002",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "DELETE",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "5cdee4c3-df4c-4f83-a664-819edaf70325",
+			"name": "put",
+			"url": "http://localhost:3000/api/con/",
+			"description": "",
+			"data": [
+				{
+					"key": "ajustar",
+					"value": "SUB",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "tipo",
+					"value": "200",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataOptions": null,
+			"dataMode": "urlencoded",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"name": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"type": "text"
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "a39bd74b-c88a-4c02-a087-cb278c3bed84",
+			"name": "post",
+			"url": "http://localhost:3000/api/con/new",
+			"description": "",
+			"data": [
+				{
+					"key": "codigo",
+					"value": "001",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "nombre",
+					"value": "Plutarco",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "apartament",
+					"value": "1",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "cuotaMensual",
+					"value": "2500",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataOptions": null,
+			"dataMode": "urlencoded",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"name": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"type": "text"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "f3ff405a-38cf-48e2-8e1e-073be1c67162",
+			"name": "get",
+			"url": "",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		}
+	]
+}
