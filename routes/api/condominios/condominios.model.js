@@ -32,6 +32,28 @@ function condominiosModel(db)
         }); //insertOne
     }
 
+    condominioModel.updateCondominio = (updateFields, condominioId, handler)=>{
+        let condominioFilter = {"_id": new ObjectId(condominioId)};
+        let updateObject = {
+          "$set": {
+                    "nombre": updateFields.nombre,
+                    "apartament": updateFields.apartament,  
+                    "dateModified":new Date().getTime()
+                }
+    };
+    condominiosCollection.updateOne(
+        condominioFilter,
+        updateObject,
+        (err, rslt)=>{
+          if(err){
+            console.log(err);
+            return handler(err, null);
+          }
+          return handler(null, rslt);
+        }
+      );
+    }; // updateObject
+
     return condominioModel;
 }
 module.exports = condominiosModel;
