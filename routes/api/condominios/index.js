@@ -67,30 +67,25 @@ function initCondominiosApi(db)
  }
 );// put :prdsku
 
-
   router.delete(
-      '/delete/:conCodigo',
-      function( req, res) {
-        conCollection = fileModel.getCondominios();
-        var conCodigoToDelete  = req.params.conCodigo;
-        var newConCollection = conCollection.filter(
-          function(o, i){
-            return conCodigoToDelete !== o.codigo;
-          }
-        ); //filter
-        conCollection = newConCollection;
-        fileModel.setCondominios(
-          conCollection,
-          function (err, savedSuccesfully) {
-            if (err) {
-              res.status(400).json({ "error": "No se pudo eliminar objeto" });
-            } else {
-              res.json({"newProdsQty": conCollection.length});
-            }
-          }
-        );
+    '/delete/:conid',
+    function( req, res) {
+
+      var id = req.params.conid || '';
+      if(id===' ')
+      {
+        return  res.status(404).json({"error": "Identificador no válido"});
       }
-    );// delete
+      conModel.deleteCondominios(id, (err, rslt)=>{
+        if(err)
+        {
+          return res.status(500).json({"error":"Ocurrió un error, intente de nuevo."});
+        }
+        return res.status(200).json({"msg":"Deleted ok"});
+        
+      }); //delete product
+    }
+  );// delete
     return router;
 }
 

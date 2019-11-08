@@ -54,6 +54,19 @@ function condominiosModel(db)
       );
     }; // updateObject
 
+    condominioModel.deleteCondominios = (id, handler)=>
+    {
+      var query = {"_id": new ObjectId(id)};
+      condominiosCollection.deleteOne(query, (err, rslt)=>{
+          if(err)
+          {
+            console.log(err);
+            return handler(err, null);
+          }
+          return handler(null, rslt);
+      })//deleteone
+    }
+
     return condominioModel;
 }
 module.exports = condominiosModel;
