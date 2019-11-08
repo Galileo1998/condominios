@@ -1,9 +1,25 @@
 var ObjectId = require('mongodb').ObjectId;
+var IndexVerified = false;
 
 function condominiosModel(db)
 {
     let condominioModel = {};
     var condominiosCollection = db.collection("condominios");
+
+    
+    if ( !IndexVerified) {
+        condominiosCollection.indexExists("codigo_1", (err, rslt)=>{
+        if(!rslt){
+            condominiosCollection.createIndex(
+            { "codigo": 1 },
+            { unique: true, name:"codigo_1"},
+            (err, rslt)=>{
+                console.log(err);
+                console.log(rslt);
+            });//createIndex
+        }
+        }); // indexExists
+    }
 
     condominioModel.getAllCondominios = (handler)=>
     {
